@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping List</title>
+</head>
+
+<body>
+
+    <center>
+
+        <h1>Shopping List</h1>
+
+        <input type="text" id="item_input" placeholder="Enter Item">
+        <button id="add_button">Add Item</button>
+
+        <hr>
+
+        <div id="shopping_list"></div>
+
+    </center>
+
+    <hr>
+
+    <h3 id="total_items"></h3>
+
+    <script>
+
+        // Array
+        let shoppingItems = [
+            "Milk",
+            "Bread",
+            "Eggs",
+            "Rice",
+            "Sugar"
+        ]
+
+        // Elements
+        let itemInput = document.getElementById("item_input")
+        let addButton = document.getElementById("add_button")
+        let shoppingList = document.getElementById("shopping_list")
+        let totalItems = document.getElementById("total_items")
+
+        // Function to display items
+        function showItems() {
+
+            shoppingList.innerHTML = ""
+
+            for (let i = 0; i < shoppingItems.length; i++) {
+
+                shoppingList.innerHTML += "<p>" + shoppingItems[i] + "</p>"
+
+            }
+
+            totalItems.innerHTML = "Total Items: " + shoppingItems.length
+
+        }
+
+        // Function to add item
+        function addItem() {
+
+            let newItem = itemInput.value
+
+            if (newItem != "") {
+
+                shoppingItems.push(newItem)
+
+                showItems()
+
+                itemInput.value = ""
+
+            }
+
+        }
+
+        // Button Click
+        addButton.addEventListener("click", addItem)
+
+        // Show items when page loads
+        showItems()
+
+    </script>
+
+</body>
+
+</html>
